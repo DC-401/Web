@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Formulir Kirim Email</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2 id="scrolling-text">WELCOME TO TOOLS DC401</h2>
+    <form method="post" action="process.php">
+        <label for="tujuan_email">Tujuan Email:</label>
+        <input type="email" name="tujuan_email" required><br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" required><br>
+
+        <label for="pesan">Pesan:</label>
+        <textarea name="pesan" rows="4" required></textarea><br>
+
+        <label for="apikey">API Key:</label>
+        <input type="text" name="apikey" id="apikey" readonly><br>
+
+
+        <input type="submit" value="Kirim" onclick="showPasswordPrompt()">
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var apiKeyInput = document.getElementById('apikey');
+            apiKeyInput.value = generateRandomApiKey();
+        });
+
+        function generateRandomApiKey() {
+            return Math.random().toString(36).substring(2, 12); 
+        }
+
+        function showPasswordPrompt() {
+            var apiKeyInput = document.getElementsByName("apikey")[0];
+            apiKeyInput.style.background = "#3498db";
+            apiKeyInput.style.color = "#fff";
+        }
+    </script>
+</body>
+
+</html>
